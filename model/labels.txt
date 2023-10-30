@@ -1,0 +1,2 @@
+0 Malade
+1 Normale
