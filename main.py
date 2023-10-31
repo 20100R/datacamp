@@ -8,8 +8,7 @@ from util import classify, set_background
 
 
 set_background('./fondecran/fe.png') #fond d'écran
-emoji = "🦅"
-st.title('Eagle Eye{emoji}')
+st.title('Eagle Eye 🦅')
 st.write("")
 st.title('Disease detection')
 st.header('Please upload an image of your eyes')   #display texte
@@ -38,4 +37,4 @@ if file is not None:
     st.write("### score: {}%".format(int(conf_score * 1000) / 10))
     if class_name== "Normale":
         emoji = "😄"
-        st.write(f"Voici un emoji : {emoji}")
+        st.write(f"{emoji}")
