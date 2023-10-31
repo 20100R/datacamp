@@ -8,8 +8,9 @@ from util import classify, set_background
 
 
 set_background('./fondecran/fe.png') #fond d'écran
-
-
+emoji = "🦅"
+st.title('Eagle Eye{emoji}')
+st.write("")
 st.title('Disease detection')
 st.header('Please upload an image of your eyes')   #display texte
 
