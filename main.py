@@ -16,15 +16,15 @@ st.header('Please upload an image of your eyes')   #display texte
 # charge l'image
 file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
 
-# load classifier
+# charge le modele
 model = load_model('./model/detectmaladie.h5')
 
-# load class names
+# charge le nom des deux classes
 with open('./model/labels.txt', 'r') as f:
     class_names = [a[:-1].split(' ')[1] for a in f.readlines()]
     f.close()
 
-# display image
+#affiche l'image chargé et si elle est malade ou pas 
 if file is not None:
     image = Image.open(file).convert('RGB')
     st.image(image, use_column_width=True)
