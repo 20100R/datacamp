@@ -7,14 +7,14 @@ import numpy as np
 from util import classify, set_background
 
 
-
+set_background('./fondecran/fe.png')
 
 # set title
-st.title('Détéction de maladie')
+st.title('Disease detection')
 
-# set header
 st.header('Please upload an image of your eyes')
 
+set_background('./fondecran/fe.png')
 # upload file
 file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
 
