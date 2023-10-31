@@ -6,20 +6,17 @@ from PIL import ImageOps, Image
 
 
 def application(image, model, labels):
-    #image: Photo de l'oeil , model: Le modèle,
+    #image: Photo de l'oeil , model: Le modèle, label: sick et healthy
     
     #on mets l'image à la bonne taille
     image = ImageOps.fit(image, (224, 224), Image.Resampling.LANCZOS)
-
     # transforme l'image en tableau numpy
-    image_array = np.asarray(image)
-
-    #adapte pour le moele
-    normalized_image_array = (image_array.astype(np.float32) / 127.5) - 1
-
+    tableau = np.asarray(image)
+    #adapte pour le modele
+    normalized_tableau = (tableau.astype(np.float32) / 127.5) - 1
     # dataset
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-    data[0] = normalized_image_array
+    data[0] = normalized_tableau
 
     #  ml
     prediction = model.predict(data)
@@ -50,14 +47,13 @@ fond_ecran('./fondecran/fe.png') #fond d'écran
 st.title('Eagle Eye 🦅')
 st.write("")
 st.title('Disease detection')
-st.header('Please upload an image of your eyes')   #display texte
+st.header('Upload an image of your eyes')   #display texte
 
 # charge l'image
-file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
+file =st.file_uploader('', type=['png', 'jpg', 'jpeg'])
 
 # charge le modele
 model = load_model('./model/detectmaladie.h5')
-
 # charge le nom des deux classes
 with open('./model/labels.txt', 'r') as f:
     labels = [a[:-1].split(' ')[1] for a in f.readlines()]
@@ -67,12 +63,10 @@ with open('./model/labels.txt', 'r') as f:
 if file is not None:
     image = Image.open(file).convert('RGB')
     st.image(image, use_column_width=True)
-
-    label, conf_score = application(image, model, labels)
-
+    label, score_res = application(image, model, labels)
     # ecrit les résultats
     st.write("## {}".format(label))
-    st.write("### score: {}%".format(int(conf_score * 1000) / 10))
+    st.write("### score: {}%".format(int(score_res * 1000) / 10))
     if label== "Healthy":
         emoji = "😄"
         st.title(f"{emoji}")
