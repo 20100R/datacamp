@@ -32,6 +32,6 @@ if file is not None:
     # ecrit les résultats
     st.write("## {}".format(class_name))
     st.write("### score: {}%".format(int(conf_score * 1000) / 10))
-    if class_name== "Normale":
+    if class_name== "Healthy":
         emoji = "😄"
         st.title(f"{emoji}")
