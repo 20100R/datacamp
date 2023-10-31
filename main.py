@@ -7,15 +7,13 @@ import numpy as np
 from util import classify, set_background
 
 
-set_background('./fondecran/fe.png')
+set_background('./fondecran/fe.png') #fond d'écran
 
-# set title
+
 st.title('Disease detection')
+st.header('Please upload an image of your eyes')   #display texte
 
-st.header('Please upload an image of your eyes')
-
-set_background('./fondecran/fe.png')
-# upload file
+# charge l'image
 file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
 
 # load classifier
