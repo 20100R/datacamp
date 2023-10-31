@@ -25,9 +25,9 @@ def application(image, model, labels):
     prediction = model.predict(data)
     index = 0 if prediction[0][0] > 0.95 else 1
     label = labels[index]
-    confidence_score = prediction[0][index]
+    score_result  = prediction[0][index]
 
-    return label, confidence_score
+    return label, score_result 
 
 
 def fond_ecran(image_file): #image_file: le chemin d'acces de l'image.
