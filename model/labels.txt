@@ -1,2 +1,2 @@
-0 Malade
-1 Normale
+0 Sick
+1 Healthy
